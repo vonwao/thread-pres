@@ -272,15 +272,15 @@ function createSelfAttention() {
     // Clear any existing content
     svg.selectAll("*").remove();
     
-    // Words
+    // Words - increased spacing between words
     const words = [
-        {text: "The", x: 50, y: 50},
-        {text: "cat", x: 100, y: 50},
+        {text: "The", x: 30, y: 50},
+        {text: "cat", x: 90, y: 50},
         {text: "the", x: 150, y: 50},
-        {text: "dog", x: 200, y: 50},
-        {text: "chased", x: 250, y: 50},
-        {text: "was", x: 320, y: 50},
-        {text: "fast", x: 370, y: 50}
+        {text: "dog", x: 210, y: 50},
+        {text: "chased", x: 280, y: 50},
+        {text: "was", x: 350, y: 50},
+        {text: "fast", x: 410, y: 50}
     ];
     
     // Attention lines - key ones that matter semantically
@@ -326,7 +326,7 @@ function createSelfAttention() {
         .attr("y", d => d.y)
         .attr("fill", "var(--light)")
         .attr("text-anchor", "middle")
-        .attr("font-size", "16px")
+        .attr("font-size", "12px")
         .text(d => d.text);
 }
 
@@ -1045,3 +1045,256 @@ function createRecommendationSystems() {
         y1: pref.y + (taste.y - pref.y) * 0.2,
         x2: taste.x - (taste.x - pref.x) * 0.2,
         y2: taste.y - (taste.y - pref.y) * 0.2
+    }));
+    
+    // Draw connections from preferences to taste
+    svg.selectAll("line.pref-connection")
+        .data(visibleConnections1)
+        .enter()
+        .append("line")
+        .attr("class", "pref-connection")
+        .attr("x1", d => d.x1)
+        .attr("y1", d => d.y1)
+        .attr("x2", d => d.x2)
+        .attr("y2", d => d.y2)
+        .attr("stroke", "var(--primary)")
+        .attr("data-color", "primary")
+        .attr("stroke-width", 2)
+        .attr("opacity", 0.6);
+    
+    // Visible connections from taste to recommendations
+    const visibleConnections2 = recommendations.map(rec => ({
+        x1: taste.x + (rec.x - taste.x) * 0.2,
+        y1: taste.y + (rec.y - taste.y) * 0.2,
+        x2: rec.x - (rec.x - taste.x) * 0.2,
+        y2: rec.y - (rec.y - taste.y) * 0.2
+    }));
+    
+    // Draw connections from taste to recommendations
+    svg.selectAll("line.rec-connection")
+        .data(visibleConnections2)
+        .enter()
+        .append("line")
+        .attr("class", "rec-connection")
+        .attr("x1", d => d.x1)
+        .attr("y1", d => d.y1)
+        .attr("x2", d => d.x2)
+        .attr("y2", d => d.y2)
+        .attr("stroke", "var(--accent)")
+        .attr("data-color", "accent")
+        .attr("stroke-width", 2)
+        .attr("opacity", 0.6);
+}
+
+// Slides 16-17: Human-AI Weaving and Intelligence Fabric
+function createHumanAIWeaving() {
+    const svg = d3.select("#human-ai-weaving");
+    
+    // Clear any existing content
+    svg.selectAll("*").remove();
+    
+    // Draw loom structure
+    svg.append("rect")
+        .attr("x", 50)
+        .attr("y", 50)
+        .attr("width", 300)
+        .attr("height", 200)
+        .attr("fill", "rgba(0,0,0,0.1)")
+        .attr("stroke", "var(--light)")
+        .attr("stroke-width", 1)
+        .attr("rx", 5);
+    
+    // Loom frame
+    svg.append("rect")
+        .attr("x", 100)
+        .attr("y", 70)
+        .attr("width", 200)
+        .attr("height", 10)
+        .attr("fill", "var(--dark)")
+        .attr("stroke", "var(--light)")
+        .attr("stroke-width", 1);
+    
+    svg.append("rect")
+        .attr("x", 100)
+        .attr("y", 220)
+        .attr("width", 200)
+        .attr("height", 10)
+        .attr("fill", "var(--dark)")
+        .attr("stroke", "var(--light)")
+        .attr("stroke-width", 1);
+    
+    // Vertical threads (warp)
+    for (let i = 0; i < 9; i++) {
+        const x = 120 + i * 20;
+        svg.append("line")
+            .attr("x1", x)
+            .attr("y1", 80)
+            .attr("x2", x)
+            .attr("y2", 220)
+            .attr("stroke", "var(--primary)")
+            .attr("data-color", "primary")
+            .attr("stroke-width", 1.5);
+    }
+    
+    // Horizontal threads (weft) - human threads
+    const humanThreadPaths = [
+        "M 100,100 C 120,90 140,110 160,100 S 200,120 220,100 S 260,110 280,100 L 300,100",
+        "M 100,130 C 120,120 140,140 160,130 S 200,150 220,130 S 260,140 280,130 L 300,130",
+        "M 100,160 C 120,150 140,170 160,160 S 200,180 220,160 S 260,170 280,160 L 300,160"
+    ];
+    
+    // Draw human threads
+    svg.selectAll("path.human-thread")
+        .data(humanThreadPaths)
+        .enter()
+        .append("path")
+        .attr("class", "human-thread")
+        .attr("d", d => d)
+        .attr("stroke", "var(--secondary)")
+        .attr("data-color", "secondary")
+        .attr("stroke-width", 2.5)
+        .attr("fill", "none");
+    
+    // Horizontal threads (weft) - AI threads
+    const aiThreadPaths = [
+        "M 100,115 C 130,125 160,105 190,115 S 220,125 250,115 S 280,125 300,115",
+        "M 100,145 C 130,155 160,135 190,145 S 220,155 250,145 S 280,155 300,145",
+        "M 100,175 C 130,185 160,165 190,175 S 220,185 250,175 S 280,185 300,175"
+    ];
+    
+    // Draw AI threads
+    svg.selectAll("path.ai-thread")
+        .data(aiThreadPaths)
+        .enter()
+        .append("path")
+        .attr("class", "ai-thread")
+        .attr("d", d => d)
+        .attr("stroke", "var(--accent)")
+        .attr("data-color", "accent")
+        .attr("stroke-width", 1.5)
+        .attr("fill", "none");
+}
+
+function createIntelligenceFabric() {
+    const svg = d3.select("#intelligence-fabric");
+    
+    // Clear any existing content
+    svg.selectAll("*").remove();
+    
+    // Create tapestry rectangle
+    svg.append("rect")
+        .attr("x", 75)
+        .attr("y", 25)
+        .attr("width", 250)
+        .attr("height", 250)
+        .attr("fill", "none")
+        .attr("stroke", "var(--secondary)")
+        .attr("data-color", "secondary")
+        .attr("stroke-width", 3)
+        .attr("rx", 5);
+    
+    // Horizontal threads
+    for (let i = 0; i < 9; i++) {
+        const y = 50 + i * 25;
+        svg.append("line")
+            .attr("x1", 75)
+            .attr("y1", y)
+            .attr("x2", 325)
+            .attr("y2", y)
+            .attr("stroke", i % 2 === 0 ? "var(--primary)" : "var(--light)")
+            .attr("data-color", i % 2 === 0 ? "primary" : "light")
+            .attr("stroke-width", 1.5);
+    }
+    
+    // Vertical threads
+    for (let i = 0; i < 9; i++) {
+        const x = 100 + i * 25;
+        svg.append("line")
+            .attr("x1", x)
+            .attr("y1", 25)
+            .attr("x2", x)
+            .attr("y2", 275)
+            .attr("stroke", i % 2 === 0 ? "var(--accent)" : "var(--secondary)")
+            .attr("data-color", i % 2 === 0 ? "accent" : "secondary")
+            .attr("stroke-width", 1.5);
+    }
+    
+    // Pattern elements (intersection highlights)
+    const patternPoints = [
+        {x: 100, y: 50}, {x: 150, y: 75}, {x: 200, y: 50}, {x: 250, y: 75}, {x: 300, y: 50},
+        {x: 125, y: 125}, {x: 175, y: 150}, {x: 225, y: 125}, {x: 275, y: 150},
+        {x: 100, y: 200}, {x: 150, y: 225}, {x: 200, y: 200}, {x: 250, y: 225}, {x: 300, y: 200}
+    ];
+    
+    svg.selectAll("circle.pattern-point")
+        .data(patternPoints)
+        .enter()
+        .append("circle")
+        .attr("class", "pattern-point")
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y)
+        .attr("r", 4)
+        .attr("fill", (d, i) => i % 2 === 0 ? "var(--secondary)" : "var(--primary)")
+        .attr("data-color", (d, i) => i % 2 === 0 ? "secondary" : "primary");
+}
+
+// Interactive visualizations
+function initializeAttentionVisualization() {
+    const container = document.getElementById('attention-visualization');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <svg width="100%" height="300" viewBox="0 0 800 300" id="attention-vis-svg">
+            <text x="400" y="150" text-anchor="middle" fill="var(--light)" font-size="12">
+                Live Attention Visualization
+            </text>
+            <text x="400" y="180" text-anchor="middle" fill="var(--light)" font-size="10">
+                Enter a sentence and see how words attend to each other
+            </text>
+        </svg>
+    `;
+    
+    const visualizeBtn = document.getElementById('visualize-btn');
+    const attentionInput = document.getElementById('attention-input');
+    
+    if (visualizeBtn && attentionInput) {
+        visualizeBtn.addEventListener('click', function() {
+            alert("This interactive demo would visualize attention between words in: " + attentionInput.value);
+            // In a real implementation, this would call visualizeAttention()
+        });
+    }
+}
+
+function initializeEmbeddingVisualization() {
+    const container = document.getElementById('embedding-visualization');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <svg width="100%" height="300" viewBox="0 0 800 300" id="embedding-vis-svg">
+            <text x="400" y="150" text-anchor="middle" fill="var(--light)" font-size="12">
+                Word Embedding Space
+            </text>
+            <text x="400" y="180" text-anchor="middle" fill="var(--light)" font-size="10">
+                Enter words to see how they cluster in semantic space
+            </text>
+        </svg>
+    `;
+    
+    const addWordBtn = document.getElementById('add-word-btn');
+    const clearWordsBtn = document.getElementById('clear-words-btn');
+    const wordInput = document.getElementById('word-input');
+    
+    if (addWordBtn && wordInput) {
+        addWordBtn.addEventListener('click', function() {
+            alert("This would add the word: " + wordInput.value + " to the visualization");
+            // In a real implementation, this would call addWordToEmbedding()
+        });
+    }
+    
+    if (clearWordsBtn) {
+        clearWordsBtn.addEventListener('click', function() {
+            alert("This would clear all words from the visualization");
+            // In a real implementation, this would reset the visualization
+        });
+    }
+}

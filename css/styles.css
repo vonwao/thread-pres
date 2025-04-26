@@ -99,9 +99,9 @@ body {
     stroke-width: 2px; /* Make lines bolder */
 }
 
-/* Increase text size in SVGs */
+/* SVG text size */
 .graphic-container svg text {
-    font-size: 120%; /* Increase text size by 20% */
+    font-size: 90%; /* Reduce text size to 90% to ensure it fits properly */
 }
 
 /* Interactive Elements */

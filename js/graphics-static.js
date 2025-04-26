@@ -72,7 +72,7 @@ function createThreadsToFabric() {
         .attr("y", 150)
         .attr("text-anchor", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "20px")
+        .attr("font-size", "16px")
         .text("vs");
     
     // Woven fabric group (right side)
@@ -218,15 +218,15 @@ function createSelfAttention() {
     const svg = d3.select("#self-attention");
     svg.selectAll("*").remove();
     
-    // Words
+    // Words - increased spacing between words
     const words = [
-        {text: "The", x: 50, y: 50},
-        {text: "cat", x: 100, y: 50},
+        {text: "The", x: 30, y: 50},
+        {text: "cat", x: 90, y: 50},
         {text: "the", x: 150, y: 50},
-        {text: "dog", x: 200, y: 50},
-        {text: "chased", x: 250, y: 50},
-        {text: "was", x: 320, y: 50},
-        {text: "fast", x: 370, y: 50}
+        {text: "dog", x: 210, y: 50},
+        {text: "chased", x: 280, y: 50},
+        {text: "was", x: 350, y: 50},
+        {text: "fast", x: 410, y: 50}
     ];
     
     // Attention lines - key ones that matter semantically
@@ -272,7 +272,7 @@ function createSelfAttention() {
         .attr("y", d => d.y)
         .attr("fill", "var(--light)")
         .attr("text-anchor", "middle")
-        .attr("font-size", "16px")
+        .attr("font-size", "12px")
         .text(d => d.text);
 }
 
@@ -344,7 +344,7 @@ function createAttentionWeights() {
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "14px")
+        .attr("font-size", "11px")
         .text(d => `Word ${d.id}`);
 }
 
@@ -415,7 +415,7 @@ function createEmbeddingSpace() {
         .attr("y", d => d.y - 15)
         .attr("text-anchor", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "12px")
+        .attr("font-size", "10px")
         .text(d => d.word);
     
     // Vector arrows showing relationships
@@ -629,7 +629,7 @@ function createEmergenceScale() {
         .attr("y", d => d.y - 20)
         .attr("text-anchor", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "10px")
+        .attr("font-size", "8px")
         .text(d => d.params);
     
     // Add capability markers and labels

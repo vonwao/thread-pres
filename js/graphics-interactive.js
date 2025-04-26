@@ -34,7 +34,7 @@ function createLanguageTranslation() {
         .attr("y", d => d.y - 20)
         .attr("text-anchor", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "12px")
+        .attr("font-size", "10px")
         .text(d => d.title);
     
     // Add some text lines
@@ -149,7 +149,7 @@ function createRecommendationSystems() {
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "14px")
+        .attr("font-size", "11px")
         .attr("font-weight", "bold")
         .text(taste.id);
     
@@ -264,7 +264,7 @@ function createMedicalDiagnosis() {
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "10px")
+        .attr("font-size", "8px")
         .text(d => d.id);
     
     // Draw connections
@@ -444,10 +444,10 @@ function initializeAttentionVisualization() {
     
     container.innerHTML = `
         <svg width="100%" height="300" viewBox="0 0 800 300" id="attention-vis-svg">
-            <text x="400" y="150" text-anchor="middle" fill="var(--light)" font-size="16">
+            <text x="400" y="150" text-anchor="middle" fill="var(--light)" font-size="12">
                 Live Attention Visualization
             </text>
-            <text x="400" y="180" text-anchor="middle" fill="var(--light)" font-size="14">
+            <text x="400" y="180" text-anchor="middle" fill="var(--light)" font-size="10">
                 Enter a sentence and see how words attend to each other
             </text>
         </svg>
@@ -470,10 +470,10 @@ function initializeEmbeddingVisualization() {
     
     container.innerHTML = `
         <svg width="100%" height="300" viewBox="0 0 800 300" id="embedding-vis-svg">
-            <text x="400" y="150" text-anchor="middle" fill="var(--light)" font-size="16">
+            <text x="400" y="150" text-anchor="middle" fill="var(--light)" font-size="12">
                 Word Embedding Space
             </text>
-            <text x="400" y="180" text-anchor="middle" fill="var(--light)" font-size="14">
+            <text x="400" y="180" text-anchor="middle" fill="var(--light)" font-size="10">
                 Enter words to see how they cluster in semantic space
             </text>
         </svg>
