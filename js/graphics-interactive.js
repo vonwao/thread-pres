@@ -73,6 +73,141 @@ function createLanguageTranslation() {
         .attr("fill", "none");
 }
 
+// Slide 12: Recommendation Systems
+function createRecommendationSystems() {
+    const svg = d3.select("#recommendation-systems");
+    svg.selectAll("*").remove();
+    
+    // User preferences (left side)
+    const preferences = [
+        {id: "Movie A", x: 80, y: 80, r: 25},
+        {id: "Movie B", x: 150, y: 50, r: 25},
+        {id: "Movie C", x: 100, y: 150, r: 25}
+    ];
+    
+    // User taste node (center)
+    const taste = {
+        id: "YOUR TASTE", 
+        x: 200, 
+        y: 120, 
+        r: 30
+    };
+    
+    // Recommendations (right side)
+    const recommendations = [
+        {id: "Rec A", x: 300, y: 80, r: 25},
+        {id: "Rec B", x: 320, y: 150, r: 25},
+        {id: "Rec C", x: 250, y: 200, r: 25}
+    ];
+    
+    // Draw preference nodes
+    svg.selectAll("circle.preference")
+        .data(preferences)
+        .enter()
+        .append("circle")
+        .attr("class", "preference")
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y)
+        .attr("r", d => d.r)
+        .attr("fill", "rgba(58, 124, 165, 0.3)")
+        .attr("stroke", "var(--primary)")
+        .attr("data-color", "primary")
+        .attr("stroke-width", 3);
+    
+    // Add preference labels
+    svg.selectAll("text.pref-label")
+        .data(preferences)
+        .enter()
+        .append("text")
+        .attr("class", "pref-label")
+        .attr("x", d => d.x)
+        .attr("y", d => d.y)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .attr("fill", "var(--light)")
+        .attr("font-size", "12px")
+        .text(d => d.id);
+    
+    // Draw taste node
+    svg.append("circle")
+        .datum(taste)
+        .attr("class", "taste")
+        .attr("cx", taste.x)
+        .attr("cy", taste.y)
+        .attr("r", taste.r)
+        .attr("fill", "rgba(217, 165, 102, 0.4)")
+        .attr("stroke", "var(--secondary)")
+        .attr("data-color", "secondary")
+        .attr("stroke-width", 3);
+    
+    // Add taste label
+    svg.append("text")
+        .datum(taste)
+        .attr("class", "taste-label")
+        .attr("x", taste.x)
+        .attr("y", taste.y)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .attr("fill", "var(--light)")
+        .attr("font-size", "14px")
+        .attr("font-weight", "bold")
+        .text(taste.id);
+    
+    // Draw recommendation nodes
+    svg.selectAll("circle.recommendation")
+        .data(recommendations)
+        .enter()
+        .append("circle")
+        .attr("class", "recommendation")
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y)
+        .attr("r", d => d.r)
+        .attr("fill", "rgba(230, 57, 70, 0.3)")
+        .attr("stroke", "var(--accent)")
+        .attr("data-color", "accent")
+        .attr("stroke-width", 3);
+    
+    // Add recommendation labels
+    svg.selectAll("text.rec-label")
+        .data(recommendations)
+        .enter()
+        .append("text")
+        .attr("class", "rec-label")
+        .attr("x", d => d.x)
+        .attr("y", d => d.y)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .attr("fill", "var(--light)")
+        .attr("font-size", "12px")
+        .text(d => d.id);
+    
+    // Draw connections from preferences to taste
+    preferences.forEach(pref => {
+        svg.append("line")
+            .attr("x1", pref.x)
+            .attr("y1", pref.y)
+            .attr("x2", taste.x)
+            .attr("y2", taste.y)
+            .attr("stroke", "var(--primary)")
+            .attr("data-color", "primary")
+            .attr("stroke-width", 2)
+            .attr("opacity", 0.6);
+    });
+    
+    // Draw connections from taste to recommendations
+    recommendations.forEach(rec => {
+        svg.append("line")
+            .attr("x1", taste.x)
+            .attr("y1", taste.y)
+            .attr("x2", rec.x)
+            .attr("y2", rec.y)
+            .attr("stroke", "var(--accent)")
+            .attr("data-color", "accent")
+            .attr("stroke-width", 2)
+            .attr("opacity", 0.6);
+    });
+}
+
 // Slide 11: Medical Diagnosis
 function createMedicalDiagnosis() {
     const svg = d3.select("#medical-diagnosis");

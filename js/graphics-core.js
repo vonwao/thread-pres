@@ -10,7 +10,7 @@ function initializeGraphics() {
     createAttentionWeights();
     createEmbeddingSpace();
     createTransformerLayers();
-    // createFractalPatterns(); // Comment out or remove this line since we removed this function
+    createFractalPatterns(); // Uncomment since we've added a simplified version
     createEmergenceScale();
     
     // Create static SVGs from graphics-interactive.js

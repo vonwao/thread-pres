@@ -454,6 +454,66 @@ function createEmbeddingSpace() {
         .attr("fill", "var(--accent)");
 }
 
+// Slide 8: Fractal Patterns - Simplified
+function createFractalPatterns() {
+    const svg = d3.select("#fractal-patterns");
+    svg.selectAll("*").remove();
+    
+    // Create a simpler pattern with nested triangles
+    
+    // Main triangle
+    svg.append("polygon")
+        .attr("points", "200,50 100,250 300,250")
+        .attr("fill", "none")
+        .attr("stroke", "var(--secondary)")
+        .attr("data-color", "secondary")
+        .attr("stroke-width", 3);
+    
+    // Inner triangle
+    svg.append("polygon")
+        .attr("points", "200,100 150,200 250,200")
+        .attr("fill", "none")
+        .attr("stroke", "var(--primary)")
+        .attr("data-color", "primary")
+        .attr("stroke-width", 3);
+    
+    // Smallest triangle
+    svg.append("polygon")
+        .attr("points", "200,125 175,175 225,175")
+        .attr("fill", "none")
+        .attr("stroke", "var(--accent)")
+        .attr("data-color", "accent")
+        .attr("stroke-width", 3);
+    
+    // Add connecting lines to show the pattern relationship
+    svg.append("line")
+        .attr("x1", 200)
+        .attr("y1", 50)
+        .attr("x2", 200)
+        .attr("y2", 100)
+        .attr("stroke", "var(--light)")
+        .attr("data-color", "light")
+        .attr("stroke-width", 2);
+    
+    svg.append("line")
+        .attr("x1", 100)
+        .attr("y1", 250)
+        .attr("x2", 150)
+        .attr("y2", 200)
+        .attr("stroke", "var(--light)")
+        .attr("data-color", "light")
+        .attr("stroke-width", 2);
+    
+    svg.append("line")
+        .attr("x1", 300)
+        .attr("y1", 250)
+        .attr("x2", 250)
+        .attr("y2", 200)
+        .attr("stroke", "var(--light)")
+        .attr("data-color", "light")
+        .attr("stroke-width", 2);
+}
+
 // Slide 7: Transformer Layers
 function createTransformerLayers() {
     const svg = d3.select("#transformer-layers");

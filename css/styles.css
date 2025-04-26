@@ -28,6 +28,7 @@ body {
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.2;
+    text-transform: none; /* Prevent all caps */
 }
 
 .reveal h1 {
@@ -95,6 +96,7 @@ body {
 .graphic-container svg path,
 .graphic-container svg line {
     vector-effect: non-scaling-stroke;
+    stroke-width: 2px; /* Make lines bolder */
 }
 
 /* Increase text size in SVGs */
@@ -169,9 +171,9 @@ body {
     display: none;
     background-color: rgba(0, 0, 0, 0.1);
     border-left: 3px solid var(--accent);
-    padding: 0.5em 1em;
-    margin: 1em 0;
-    font-size: 0.9em;
+    padding: 0.3em 0.8em;
+    margin: 0.8em 0;
+    font-size: 0.75em; /* Smaller font size */
     font-style: italic;
     max-width: 80%;
     margin-left: auto;
