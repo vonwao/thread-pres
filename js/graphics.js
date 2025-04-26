@@ -122,7 +122,7 @@ function createThreadsToFabric() {
         .attr("y", 150)
         .attr("text-anchor", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "20px")
+        .attr("font-size", "14px")
         .text("vs");
     
     // Woven fabric group (right side)
@@ -326,7 +326,7 @@ function createSelfAttention() {
         .attr("y", d => d.y)
         .attr("fill", "var(--light)")
         .attr("text-anchor", "middle")
-        .attr("font-size", "12px")
+        .attr("font-size", "10px")
         .text(d => d.text);
 }
 
@@ -400,7 +400,7 @@ function createAttentionWeights() {
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "14px")
+        .attr("font-size", "10px")
         .text(d => `Word ${d.id}`);
 }
 
@@ -717,7 +717,7 @@ function createEmergenceScale() {
         .attr("y", d => d.y - 20)
         .attr("text-anchor", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "10px")
+        .attr("font-size", "8px")
         .text(d => d.params);
     
     // Add capability markers and labels
@@ -984,7 +984,7 @@ function createRecommendationSystems() {
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
         .attr("fill", "var(--light)")
-        .attr("font-size", "8px")
+        .attr("font-size", "7px")
         .text(d => d.id);
     
     // Draw taste node

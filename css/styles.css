@@ -101,7 +101,12 @@ body {
 
 /* SVG text size */
 .graphic-container svg text {
-    font-size: 90%; /* Reduce text size to 90% to ensure it fits properly */
+    font-size: 70%; /* Reduce text size to 70% to ensure it fits properly */
+}
+
+/* Additional specific text size adjustments */
+.graphic-container svg .word {
+    font-size: 60%; /* Make the sentence words even smaller */
 }
 
 /* Interactive Elements */
