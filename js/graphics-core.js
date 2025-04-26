@@ -10,7 +10,7 @@ function initializeGraphics() {
     createAttentionWeights();
     createEmbeddingSpace();
     createTransformerLayers();
-    createFractalPatterns();
+    // createFractalPatterns(); // Comment out or remove this line since we removed this function
     createEmergenceScale();
     
     // Create static SVGs from graphics-interactive.js
@@ -76,11 +76,6 @@ function updateGraphicsColors() {
             el.setAttribute('fill', accent);
         }
     });
-    
-    // If we have any D3 visualizations active, update them
-    if (typeof updateD3Visualizations === 'function') {
-        updateD3Visualizations();
-    }
 }
 
 // ----- Helper Functions -----

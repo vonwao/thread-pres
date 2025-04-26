@@ -69,12 +69,12 @@ body {
     border-radius: 3px;
 }
 
-/* Graphic Container */
+/* Graphic Container - UPDATED FOR LARGER SIZE */
 .graphic-container {
-    width: 80%;
-    max-width: 800px;
-    height: 400px;
-    margin: 2em auto;
+    width: 90%;  /* Increased from 80% */
+    max-width: 900px; /* Increased from 800px */
+    height: 500px; /* Increased from 400px */
+    margin: 1.5em auto; /* Decreased from 2em to fit better */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,6 +82,24 @@ body {
     border-radius: 8px;
     overflow: hidden;
     position: relative;
+}
+
+.graphic-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Make sure SVG elements scale appropriately */
+.graphic-container svg circle,
+.graphic-container svg rect,
+.graphic-container svg path,
+.graphic-container svg line {
+    vector-effect: non-scaling-stroke;
+}
+
+/* Increase text size in SVGs */
+.graphic-container svg text {
+    font-size: 120%; /* Increase text size by 20% */
 }
 
 /* Interactive Elements */
@@ -106,6 +124,44 @@ body {
 
 .interactive:hover::after {
     opacity: 1;
+}
+
+/* Interactive controls within graphic containers */
+.interactive-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.interactive-controls input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--light);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    margin-right: 10px;
+    width: 300px;
+}
+
+.interactive-controls button {
+    padding: 8px 12px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin: 0 5px;
+}
+
+.interactive-controls button:hover {
+    background-color: var(--secondary);
 }
 
 /* Speaker Notes */
@@ -205,7 +261,7 @@ body {
     .reveal h1 { font-size: 2em; }
     .reveal h2 { font-size: 1.5em; }
     .reveal p { font-size: 1em; }
-    .graphic-container { height: 300px; }
+    .graphic-container { height: 350px; }
     .two-column {
         flex-direction: column;
     }
