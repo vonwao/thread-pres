@@ -1,0 +1,115 @@
+/* Theme: Default (Thread) */
+:root {
+    --primary: #3a7ca5;      /* Thread blue */
+    --secondary: #d9a566;    /* Gold accent */
+    --dark: #2f4858;         /* Dark blue background */
+    --light: #f7f9f9;        /* Off-white text */
+    --accent: #e63946;       /* Red highlight */
+    --code-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Theme: Neural */
+.theme-neural {
+    --primary: #8e44ad;      /* Purple for neurons */
+    --secondary: #27ae60;    /* Green for activation */
+    --dark: #2c3e50;         /* Dark slate background */
+    --light: #ecf0f1;        /* Light gray text */
+    --accent: #e74c3c;       /* Red highlight */
+    --code-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Theme: Fractal */
+.theme-fractal {
+    --primary: #1abc9c;      /* Teal for main patterns */
+    --secondary: #f39c12;    /* Orange for highlights */
+    --dark: #34495e;         /* Deep blue-gray background */
+    --light: #f5f5f5;        /* Bright white text */
+    --accent: #9b59b6;       /* Purple accent */
+    --code-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Theme: Minimal */
+.theme-minimal {
+    --primary: #555555;      /* Dark gray */
+    --secondary: #999999;    /* Mid gray */
+    --dark: #ffffff;         /* White background */
+    --light: #333333;        /* Dark text */
+    --accent: #0078d7;       /* Blue accent */
+    --code-bg: rgba(0, 0, 0, 0.05);
+}
+
+/* Theme: Tapestry */
+.theme-tapestry {
+    --primary: #5d4037;      /* Brown thread */
+    --secondary: #a1887f;    /* Lighter brown */
+    --dark: #3e2723;         /* Dark brown background */
+    --light: #efebe9;        /* Off-white text */
+    --accent: #ff5722;       /* Orange-red accent */
+    --code-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Apply theme overrides for slide sections */
+.reveal .slides section.has-dark-background,
+.reveal .slides section.has-dark-background h1,
+.reveal .slides section.has-dark-background h2,
+.reveal .slides section.has-dark-background h3,
+.reveal .slides section.has-dark-background p {
+    color: var(--light);
+}
+
+.reveal .slides section.has-light-background,
+.reveal .slides section.has-light-background h1,
+.reveal .slides section.has-light-background h2,
+.reveal .slides section.has-light-background h3,
+.reveal .slides section.has-light-background p {
+    color: var(--dark);
+}
+
+/* Theme Switcher Styles */
+.theme-switcher {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+}
+
+.theme-option {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease;
+}
+
+.theme-option:hover {
+    transform: scale(1.2);
+}
+
+.theme-option.active {
+    border-color: white;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.theme-default {
+    background-color: #3a7ca5;
+}
+
+.theme-neural {
+    background-color: #8e44ad;
+}
+
+.theme-fractal {
+    background-color: #1abc9c;
+}
+
+.theme-minimal {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
+
+.theme-tapestry {
+    background-color: #5d4037;
+}

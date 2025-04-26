@@ -1,0 +1,216 @@
+/* Base Styles */
+:root {
+    /* These colors are overridden in themes.css */
+    --primary: #3a7ca5;
+    --secondary: #d9a566;
+    --dark: #2f4858;
+    --light: #f7f9f9;
+    --accent: #e63946;
+    --code-bg: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.6s ease;
+}
+
+/* Typography Overrides */
+.reveal h1, 
+.reveal h2, 
+.reveal h3 {
+    font-family: 'Inter', sans-serif;
+    color: var(--secondary);
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.reveal h1 {
+    font-size: 2.5em;
+}
+
+.reveal h2 {
+    font-size: 1.8em;
+}
+
+.reveal h3 {
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
+.reveal p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+.reveal pre {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--code-bg);
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+    width: 90%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.8em;
+}
+
+.reveal code {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+/* Graphic Container */
+.graphic-container {
+    width: 80%;
+    max-width: 800px;
+    height: 400px;
+    margin: 2em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Interactive Elements */
+.interactive {
+    position: relative;
+    cursor: pointer;
+}
+
+.interactive::after {
+    content: "Click to interact";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--accent);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.interactive:hover::after {
+    opacity: 1;
+}
+
+/* Speaker Notes */
+.speaker-notes {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-left: 3px solid var(--accent);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    font-size: 0.9em;
+    font-style: italic;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.speaker-notes.visible {
+    display: block;
+}
+
+.speaker-notes-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.speaker-notes-control:hover {
+    opacity: 1;
+}
+
+.speaker-notes-control button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+}
+
+.speaker-notes-control button:hover {
+    background-color: var(--secondary);
+}
+
+.shortcuts-info {
+    font-size: 0.7em;
+    margin-top: 5px;
+    text-align: center;
+    color: var(--light);
+}
+
+/* Split Layouts */
+.two-column {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.column {
+    width: 48%;
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+.thread-appear {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 2s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+
+/* Custom Slide Backgrounds */
+.slide-with-threads {
+    background-image: radial-gradient(circle at center, rgba(58, 124, 165, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .reveal h1 { font-size: 2em; }
+    .reveal h2 { font-size: 1.5em; }
+    .reveal p { font-size: 1em; }
+    .graphic-container { height: 300px; }
+    .two-column {
+        flex-direction: column;
+    }
+    .column {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+}
