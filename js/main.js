@@ -103,14 +103,25 @@ document.addEventListener('DOMContentLoaded', function() {
         hideInfoModal();
     });
     
+    // View full notes button event listener
+    document.getElementById('view-full-notes').addEventListener('click', function() {
+        showFullNotesModal();
+    });
+    
+    // Close full notes modal button event listener
+    document.getElementById('close-full-notes').addEventListener('click', function() {
+        hideFullNotesModal();
+    });
+    
     // Keyboard shortcut for speaker notes (redundant with RevealJS 'S' key but added for consistency)
     document.addEventListener('keydown', function(event) {
         if (event.key === 'n' && (event.ctrlKey || event.metaKey)) {
             toggleSpeakerNotes();
         }
-        // Escape key to close modal
+        // Escape key to close modals
         if (event.key === 'Escape') {
             hideInfoModal();
+            hideFullNotesModal();
         }
     });
 });
@@ -330,4 +341,72 @@ function calculateTotalWordCount() {
     
     // Update the word count display
     document.getElementById('total-word-count').textContent = totalWords;
+}
+
+// Show the full notes modal
+function showFullNotesModal() {
+    // Populate full notes content
+    populateFullNotes();
+    
+    // Show the full notes modal
+    document.getElementById('full-notes-modal').style.display = 'block';
+    
+    // Hide the info modal
+    hideInfoModal();
+}
+
+// Hide the full notes modal
+function hideFullNotesModal() {
+    document.getElementById('full-notes-modal').style.display = 'none';
+}
+
+// Populate the full notes modal with all speaker notes
+function populateFullNotes() {
+    const fullNotesContent = document.getElementById('full-notes-content');
+    fullNotesContent.innerHTML = ''; // Clear existing content
+    
+    // Get all slides
+    const slides = document.querySelectorAll('.reveal .slides section');
+    
+    // Loop through slides and add notes for each
+    slides.forEach((slide, index) => {
+        // Skip if no notes for this slide
+        if (!speakerNotes[index + 1]) {
+            return;
+        }
+        
+        // Create note item container
+        const noteItem = document.createElement('div');
+        noteItem.className = 'note-item';
+        
+        // Get slide title
+        let title = '';
+        const h1 = slide.querySelector('h1');
+        const h2 = slide.querySelector('h2');
+        
+        if (h1) {
+            title = h1.textContent;
+        } else if (h2) {
+            title = h2.textContent;
+        } else {
+            title = `Slide ${index + 1}`;
+        }
+        
+        // Create title element
+        const titleElement = document.createElement('h3');
+        titleElement.className = 'note-title';
+        titleElement.textContent = `${index + 1}. ${title}`;
+        
+        // Create text element
+        const textElement = document.createElement('div');
+        textElement.className = 'note-text';
+        textElement.textContent = speakerNotes[index + 1];
+        
+        // Add elements to note item
+        noteItem.appendChild(titleElement);
+        noteItem.appendChild(textElement);
+        
+        // Add note item to content
+        fullNotesContent.appendChild(noteItem);
+    });
 }

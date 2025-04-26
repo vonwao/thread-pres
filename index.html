@@ -47,15 +47,27 @@
         </div>
         <div class="info-modal-content">
             <div class="info-modal-section">
+                <h3>Speaker Notes</h3>
+                <p>Total word count: <span class="word-count" id="total-word-count">0</span> words</p>
+                <button id="view-full-notes" class="view-notes-btn">View Full Speaker Notes</button>
+            </div>
+            <div class="info-modal-section">
                 <h3>Slides</h3>
                 <ul class="slide-list" id="slide-list">
                     <!-- Will be populated by JavaScript -->
                 </ul>
             </div>
-            <div class="info-modal-section">
-                <h3>Speaker Notes</h3>
-                <p>Total word count: <span class="word-count" id="total-word-count">0</span> words</p>
-            </div>
+        </div>
+    </div>
+    
+    <!-- Full Speaker Notes Modal -->
+    <div class="full-notes-modal" id="full-notes-modal">
+        <div class="full-notes-header">
+            <h2>Full Speaker Notes</h2>
+            <button class="full-notes-close" id="close-full-notes">Close</button>
+        </div>
+        <div class="full-notes-content" id="full-notes-content">
+            <!-- Will be populated by JavaScript -->
         </div>
     </div>
     

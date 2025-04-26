@@ -46,8 +46,24 @@ function initializeSpeakerNotes() {
         const noteElement = document.getElementById(`speaker-note-${i}`);
         if (noteElement) {
             noteElement.textContent = speakerNotes[i];
+        } else {
+            console.warn(`Speaker note element #speaker-note-${i} not found`);
         }
     }
+    
+    // Create a single container for all speaker notes
+    const notesContainer = document.createElement('div');
+    notesContainer.id = 'speaker-notes-container';
+    notesContainer.className = 'speaker-notes';
+    
+    // Add the current slide's notes to the container
+    const currentSlideIndex = Reveal.getIndices().h + 1; // +1 because our notes are 1-indexed
+    if (speakerNotes[currentSlideIndex]) {
+        notesContainer.textContent = speakerNotes[currentSlideIndex];
+    }
+    
+    // Add the container to the body
+    document.body.appendChild(notesContainer);
     
     // Initialize Reveal.js speaker notes plugin
     // This is handled by RevealJS's plugins system
@@ -75,14 +91,14 @@ function updateVisibleSpeakerNotes(slideIndex) {
         return;
     }
     
-    // Highlight current slide's notes
-    const notes = document.querySelectorAll('.speaker-notes.visible');
-    notes.forEach(note => {
-        note.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
-    });
-    
-    const currentNote = document.getElementById(`speaker-note-${slideIndex + 1}`);
-    if (currentNote && currentNote.classList.contains('visible')) {
-        currentNote.style.backgroundColor = 'rgba(var(--accent-rgb), 0.1)';
+    // Update the content of the speaker notes container
+    const notesContainer = document.getElementById('speaker-notes-container');
+    if (notesContainer) {
+        const currentSlideIndex = slideIndex + 1; // +1 because our notes are 1-indexed
+        if (speakerNotes[currentSlideIndex]) {
+            notesContainer.textContent = speakerNotes[currentSlideIndex];
+        } else {
+            notesContainer.textContent = 'No speaker notes for this slide.';
+        }
     }
 }
