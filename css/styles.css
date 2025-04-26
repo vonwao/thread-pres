@@ -520,6 +520,55 @@ body {
     background-image: radial-gradient(circle at center, rgba(58, 124, 165, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
+/* Background Image Styles */
+.has-background-image {
+    position: relative;
+}
+
+.has-background-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.9; /* Slightly transparent to ensure content is visible */
+    z-index: -1;
+}
+
+/* Apply the background image from the data attribute */
+section[data-background-image]::before {
+    background-image: var(--bg-image);
+}
+
+/* Add a semi-transparent overlay to ensure text is readable */
+section[data-background-image]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for better text contrast */
+    z-index: -1;
+}
+
+/* Ensure text is readable on background images */
+section[data-background-image] h1,
+section[data-background-image] h2,
+section[data-background-image] h3,
+section[data-background-image] p {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Text shadow for better readability */
+    color: var(--light); /* Ensure text is light colored for contrast */
+}
+
+section[data-background-image] .graphic-container {
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly darker background for graphics */
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .reveal h1 { font-size: 2em; }

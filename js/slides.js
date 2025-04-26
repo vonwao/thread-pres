@@ -6,6 +6,56 @@ function initializeSlides() {
     
     // Add all slides to the container
     slidesContainer.innerHTML = createSlideContent();
+    
+    // After slides are added to the DOM, check for background images
+    checkForBackgroundImages();
+}
+
+// Check for background images for each slide
+function checkForBackgroundImages() {
+    const slides = document.querySelectorAll('.reveal .slides section');
+    
+    slides.forEach((slide, index) => {
+        // Slide index is 1-based in the UI but 0-based in the DOM
+        const slideNumber = index + 1;
+        
+        // Create an image element to test if the background image exists
+        const img = new Image();
+        
+        // Try different image formats
+        const formats = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
+        let formatIndex = 0;
+        
+        function tryNextFormat() {
+            if (formatIndex < formats.length) {
+                const format = formats[formatIndex];
+                img.src = `assets/back_${slideNumber}.${format}`;
+                formatIndex++;
+            }
+        }
+        
+        // If image loads successfully, set it as background
+        img.onload = function() {
+            // Add a data attribute with the background image path
+            slide.setAttribute('data-background-image', img.src);
+            
+            // Set the CSS variable for the background image
+            slide.style.setProperty('--bg-image', `url('${img.src}')`);
+            
+            // Add a class for additional styling
+            slide.classList.add('has-background-image');
+            
+            console.log(`Background image found for slide ${slideNumber}: ${img.src}`);
+        };
+        
+        // If image fails to load, try the next format
+        img.onerror = function() {
+            tryNextFormat();
+        };
+        
+        // Start trying formats
+        tryNextFormat();
+    });
 }
 
 // Create all slide content as HTML

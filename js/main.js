@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
             linkify: true
         },
         
+        // Background settings
+        backgroundTransition: 'fade', // Background transition effect
+        
         // Custom callbacks
         dependencies: []
     });
