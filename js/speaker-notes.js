@@ -57,7 +57,19 @@ function initializeSpeakerNotes() {
     notesContainer.className = 'speaker-notes';
     
     // Add the current slide's notes to the container
-    const currentSlideIndex = Reveal.getIndices().h + 1; // +1 because our notes are 1-indexed
+    // Get the current slide index from the URL hash or default to 0
+    let currentSlideIndex = 0;
+    const hash = window.location.hash;
+    if (hash) {
+        const match = hash.match(/#\/(\d+)/);
+        if (match && match[1]) {
+            currentSlideIndex = parseInt(match[1], 10);
+        }
+    }
+    
+    // Add 1 because our notes are 1-indexed
+    currentSlideIndex += 1;
+    
     if (speakerNotes[currentSlideIndex]) {
         notesContainer.textContent = speakerNotes[currentSlideIndex];
     }
