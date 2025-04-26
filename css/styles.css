@@ -180,9 +180,15 @@ body {
     margin: 0.8em 0;
     font-size: 0.75em; /* Smaller font size */
     font-style: italic;
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 25%; /* Narrower to fit on the left side */
+    margin-left: 20px; /* Left-aligned instead of centered */
+    position: fixed; /* Fixed position */
+    left: 0; /* Align to the left side */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+    max-height: 80vh; /* Limit height */
+    overflow-y: auto; /* Add scrolling if needed */
+    z-index: 900; /* Ensure it's above other elements */
 }
 
 .speaker-notes.visible {
@@ -192,7 +198,7 @@ body {
 .speaker-notes-control {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px; /* Changed from right to left */
     z-index: 1000;
     opacity: 0.3;
     transition: opacity 0.3s ease;
@@ -216,6 +222,126 @@ body {
 
 .speaker-notes-control button:hover {
     background-color: var(--secondary);
+}
+
+/* Info Button and Modal */
+.info-control {
+    position: fixed;
+    bottom: 20px;
+    left: 200px; /* Increased distance from speaker notes button */
+    z-index: 1000;
+    opacity: 0.8; /* Increased opacity for better visibility */
+    transition: opacity 0.3s ease;
+    display: block !important; /* Ensure it's visible */
+}
+
+.info-control:hover {
+    opacity: 1;
+}
+
+.info-control button {
+    background-color: var(--accent); /* Changed to accent color for better visibility */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+    display: block !important; /* Ensure it's visible */
+}
+
+.info-control button:hover {
+    background-color: var(--accent);
+}
+
+.info-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark);
+    border: 2px solid var(--secondary);
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 2000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.info-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--secondary);
+}
+
+.info-modal-header h2 {
+    margin: 0;
+    color: var(--secondary);
+}
+
+.info-modal-close {
+    background: none;
+    border: none;
+    color: var(--light);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.info-modal-content {
+    margin-bottom: 20px;
+}
+
+.info-modal-section {
+    margin-bottom: 20px;
+}
+
+.info-modal-section h3 {
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.slide-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.slide-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.slide-list li:last-child {
+    border-bottom: none;
+}
+
+.word-count {
+    font-size: 1.2em;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1999;
 }
 
 .shortcuts-info {

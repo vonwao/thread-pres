@@ -88,10 +88,29 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleSpeakerNotes();
     });
     
+    // Info button event listener
+    document.getElementById('show-info').addEventListener('click', function() {
+        showInfoModal();
+    });
+    
+    // Close modal button event listener
+    document.getElementById('close-modal').addEventListener('click', function() {
+        hideInfoModal();
+    });
+    
+    // Close modal when clicking on overlay
+    document.getElementById('modal-overlay').addEventListener('click', function() {
+        hideInfoModal();
+    });
+    
     // Keyboard shortcut for speaker notes (redundant with RevealJS 'S' key but added for consistency)
     document.addEventListener('keydown', function(event) {
         if (event.key === 'n' && (event.ctrlKey || event.metaKey)) {
             toggleSpeakerNotes();
+        }
+        // Escape key to close modal
+        if (event.key === 'Escape') {
+            hideInfoModal();
         }
     });
 });
@@ -238,4 +257,77 @@ function updateGraphicsColors() {
     if (typeof updateD3Visualizations === 'function') {
         updateD3Visualizations();
     }
+}
+
+// Show the info modal with presentation details
+function showInfoModal() {
+    // Populate slide list
+    populateSlideList();
+    
+    // Calculate and display total word count
+    calculateTotalWordCount();
+    
+    // Show modal and overlay
+    document.getElementById('info-modal').style.display = 'block';
+    document.getElementById('modal-overlay').style.display = 'block';
+}
+
+// Hide the info modal
+function hideInfoModal() {
+    document.getElementById('info-modal').style.display = 'none';
+    document.getElementById('modal-overlay').style.display = 'none';
+}
+
+// Populate the slide list in the modal
+function populateSlideList() {
+    const slideList = document.getElementById('slide-list');
+    slideList.innerHTML = ''; // Clear existing content
+    
+    // Get all slides - use RevealJS sections instead of .slide class
+    const slides = document.querySelectorAll('.reveal .slides section');
+    
+    // Loop through slides and add to list
+    slides.forEach((slide, index) => {
+        const li = document.createElement('li');
+        
+        // Get slide title (h1, h2, or first text content)
+        let title = '';
+        const h1 = slide.querySelector('h1');
+        const h2 = slide.querySelector('h2');
+        
+        if (h1) {
+            title = h1.textContent;
+        } else if (h2) {
+            title = h2.textContent;
+        } else {
+            // Get first paragraph or any text content
+            const p = slide.querySelector('p');
+            if (p) {
+                title = p.textContent.substring(0, 50) + (p.textContent.length > 50 ? '...' : '');
+            } else {
+                title = `Slide ${index + 1}`;
+            }
+        }
+        
+        li.textContent = `${index + 1}. ${title}`;
+        slideList.appendChild(li);
+    });
+}
+
+// Calculate total word count of speaker notes
+function calculateTotalWordCount() {
+    let totalWords = 0;
+    
+    // Loop through all speaker notes
+    for (const slideIndex in speakerNotes) {
+        if (speakerNotes.hasOwnProperty(slideIndex)) {
+            const noteText = speakerNotes[slideIndex];
+            // Count words (split by whitespace)
+            const words = noteText.trim().split(/\s+/);
+            totalWords += words.length;
+        }
+    }
+    
+    // Update the word count display
+    document.getElementById('total-word-count').textContent = totalWords;
 }

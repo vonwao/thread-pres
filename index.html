@@ -25,11 +25,37 @@
         </div>
     </div>
 
-    <!-- Speaker Notes Toggle -->
+    <!-- Speaker Notes Toggle (moved to bottom left) -->
     <div class="speaker-notes-control">
         <button id="toggle-notes">Toggle Speaker Notes</button>
         <div class="shortcuts-info">
             Press 'S' for presenter view
+        </div>
+    </div>
+    
+    <!-- Info Button -->
+    <div class="info-control">
+        <button id="show-info">Info</button>
+    </div>
+    
+    <!-- Info Modal -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="info-modal" id="info-modal">
+        <div class="info-modal-header">
+            <h2>Presentation Information</h2>
+            <button class="info-modal-close" id="close-modal">&times;</button>
+        </div>
+        <div class="info-modal-content">
+            <div class="info-modal-section">
+                <h3>Slides</h3>
+                <ul class="slide-list" id="slide-list">
+                    <!-- Will be populated by JavaScript -->
+                </ul>
+            </div>
+            <div class="info-modal-section">
+                <h3>Speaker Notes</h3>
+                <p>Total word count: <span class="word-count" id="total-word-count">0</span> words</p>
+            </div>
         </div>
     </div>
     
