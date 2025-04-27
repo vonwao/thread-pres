@@ -292,10 +292,74 @@ attention = np.array([
             <div class="speaker-notes" id="speaker-note-17"></div>
         </section>
 
-        <!-- Slide 18: Final Quote -->
+        <!-- Slide 18: OpenAI - GPT-4 -->
+        <section>
+            <h2>OpenAI – GPT-4</h2>
+            <div class="graphic-container">
+                <svg id="openai-gpt4" width="80%" height="80%" viewBox="0 0 400 300">
+                    <!-- SVG content will be created by graphics.js -->
+                </svg>
+            </div>
+            <ul>
+                <li><strong>Strength:</strong> Versatile generalist with human-level reasoning.</li>
+                <li><strong>Specs:</strong> ~1.5T parameters (Mixture of Experts), 128K context window.</li>
+                <li><strong>Edge:</strong> Dominates in creative writing, coding, and multilingual tasks.</li>
+            </ul>
+            <div class="speaker-notes" id="speaker-note-18"></div>
+        </section>
+
+        <!-- Slide 19: Anthropic - Claude 3 Sonnet -->
+        <section>
+            <h2>Anthropic – Claude 3 Sonnet</h2>
+            <div class="graphic-container">
+                <svg id="anthropic-claude" width="80%" height="80%" viewBox="0 0 400 300">
+                    <!-- SVG content will be created by graphics.js -->
+                </svg>
+            </div>
+            <ul>
+                <li><strong>Strength:</strong> Leading in code generation and safety alignment.</li>
+                <li><strong>Specs:</strong> ~70B parameters, 200K context window.</li>
+                <li><strong>Edge:</strong> Excels in coding benchmarks and long-context reasoning.</li>
+            </ul>
+            <div class="speaker-notes" id="speaker-note-19"></div>
+        </section>
+
+        <!-- Slide 20: DeepSeek - R1 -->
+        <section>
+            <h2>DeepSeek – R1</h2>
+            <div class="graphic-container">
+                <svg id="deepseek-r1" width="80%" height="80%" viewBox="0 0 400 300">
+                    <!-- SVG content will be created by graphics.js -->
+                </svg>
+            </div>
+            <ul>
+                <li><strong>Strength:</strong> Efficient open-source model with high performance.</li>
+                <li><strong>Specs:</strong> 671B parameters (Mixture of Experts), 128K context window.</li>
+                <li><strong>Edge:</strong> Matches top-tier models in math and coding tasks with lower computational requirements.</li>
+            </ul>
+            <div class="speaker-notes" id="speaker-note-20"></div>
+        </section>
+
+        <!-- Slide 21: xAI - Grok 3 -->
+        <section>
+            <h2>xAI – Grok 3</h2>
+            <div class="graphic-container">
+                <svg id="xai-grok" width="80%" height="80%" viewBox="0 0 400 300">
+                    <!-- SVG content will be created by graphics.js -->
+                </svg>
+            </div>
+            <ul>
+                <li><strong>Strength:</strong> Massive context handling and rapid response.</li>
+                <li><strong>Specs:</strong> 2.7T parameters, 1M context window.</li>
+                <li><strong>Edge:</strong> Processes extensive documents swiftly, ideal for complex problem-solving.</li>
+            </ul>
+            <div class="speaker-notes" id="speaker-note-21"></div>
+        </section>
+
+        <!-- Slide 22: Final Quote -->
         <section class="slide-with-threads">
             <h1>"We are not what we know.<br>We are what we connect."</h1>
-            <div class="speaker-notes" id="speaker-note-18"></div>
+            <div class="speaker-notes" id="speaker-note-22"></div>
         </section>
     `;
 }

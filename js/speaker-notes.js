@@ -36,7 +36,15 @@ const speakerNotes = {
     
     17: "Intelligence isn't linear. It's a fabric. Baby thoughts or billion-parameter models—it's all about the weave. The question becomes: what unique threads do you bring that AI cannot? How might we weave them together to create something neither could alone? I invite you to start seeing your own thinking as threadwork—notice the connections you make, the patterns you weave, and consider how they might intertwine with machine intelligence to create new tapestries of understanding.",
     
-    18: "Thank you for joining me on this journey through the fabric of intelligence. I hope you'll take this metaphor with you and explore how it might apply in your own work and thinking. And now, I'll go back to debugging whatever I broke this morning. (pause, smile) I'm happy to take any questions."
+    18: "Now let's look at some of the leading AI models that exemplify this threadwork concept. OpenAI's GPT-4 represents one of the most versatile generalist models, with approximately 1.5 trillion parameters using a Mixture of Experts architecture. Its ability to handle creative writing, coding, and multilingual tasks demonstrates how dense connection patterns enable human-level reasoning across diverse domains.",
+    
+    19: "Anthropic's Claude 3 Sonnet takes a different approach, focusing heavily on safety alignment and code generation. With about 70 billion parameters but a 200K context window, it shows how thoughtful architecture can create powerful capabilities even with fewer parameters. Claude excels particularly in coding benchmarks and long-context reasoning tasks.",
+    
+    20: "DeepSeek's R1 model demonstrates the power of efficient architecture design. With 671 billion parameters using a Mixture of Experts approach, it matches top-tier models in math and coding tasks while requiring less computational resources. This efficiency in connection patterns shows how thoughtful design can create more with less.",
+    
+    21: "xAI's Grok 3 pushes the boundaries with 2.7 trillion parameters and a massive 1 million token context window. This enables it to process extensive documents swiftly and handle complex problem-solving tasks. The scale of its connection fabric allows for reasoning across unprecedented amounts of context.",
+    
+    22: "Thank you for joining me on this journey through the fabric of intelligence. I hope you'll take this metaphor with you and explore how it might apply in your own work and thinking. And now, I'll go back to debugging whatever I broke this morning. (pause, smile) I'm happy to take any questions."
 };
 
 // Initialize speaker notes
